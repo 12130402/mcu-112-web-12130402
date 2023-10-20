@@ -1,0 +1,13 @@
+body {
+  background-color: #f5f5f5;
+}
+
+.container {
+  border-style: solid;
+  width: 550px;
+}
+
+input[typ="checkbox"] {
+  width: 25px;
+  height: 25px;
+}
