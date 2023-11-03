@@ -8,5 +8,5 @@ console.log("Todo Name: ", todo);
 const hasFinshed = false;
 console.log("Has Finished:", hasFinshed);
 
-let finishDate = new Date();
+let finishDate: Date | undefined;
 console.log("Finish Date: ", finishDate);
