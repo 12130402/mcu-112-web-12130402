@@ -1,3 +1,14 @@
-{{ hasFinished }}
-<hr />
-<app-todo id="1" [content]="content" [hasFinished]="hasFinished"></app-todo>
+<div class="container">
+  <section>
+    <app-todo
+      id="1"
+      [content]="content"
+      [(hasFinished)]="hasFinished"
+    ></app-todo>
+    <app-todo
+      id="1"
+      [content]="content"
+      [(hasFinished)]="hasFinished"
+    ></app-todo>
+  </section>
+</div>
