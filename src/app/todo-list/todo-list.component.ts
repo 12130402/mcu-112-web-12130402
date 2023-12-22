@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { NgFor } from '@angular/common';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TodoComponent } from '../todo/todo.component';
 import { Todo } from '../model/todo';
@@ -6,19 +7,14 @@ import { Todo } from '../model/todo';
 @Component({
   selector: 'app-todo-list',
   standalone: true,
-  imports: [TodoComponent],
+  imports: [NgFor, TodoComponent],
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.css',
 })
 export class TodoListComponent {
-  task = new Todo(1, '待辦事項 A');
+  @Input()
+  tasks!: Todo[];
 
-  onStateChange(state: boolean): void {
-    if (state) {
-      this.task.setFinished(new Date());
-    } else {
-      this.task.finishDate = undefined;
-      this.task.hasFinished = false;
-    }
-  }
+  @Output()
+  stateChange = new EventEmitter<{ index: number; state: boolean }>();
 }
