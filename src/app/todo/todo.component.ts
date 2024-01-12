@@ -1,4 +1,4 @@
-import { DatePipe } from '@angular/common';
+import { DatePipe } from "@angular/common";
 import {
   Component,
   EventEmitter,
@@ -6,15 +6,15 @@ import {
   Input,
   OnInit,
   Output,
-} from '@angular/core';
-import { Todo } from '../model/todo';
+} from "@angular/core";
+import { Todo } from "../model/todo";
 
 @Component({
-  selector: 'app-todo',
+  selector: "app-todo",
   standalone: true,
   imports: [DatePipe],
-  templateUrl: './todo.component.html',
-  styleUrl: './todo.component.css',
+  templateUrl: "./todo.component.html",
+  styleUrl: "./todo.component.css",
 })
 export class TodoComponent {
   @Input({ required: true })
@@ -28,8 +28,8 @@ export class TodoComponent {
 
   @Output()
   readonly stateChange = new EventEmitter<boolean>();
-  @HostBinding('class')
-  class = 'app-todo';
+  @HostBinding("class")
+  class = "app-todo";
 
   onSetStatus(hasFinished: boolean): void {
     this.stateChange.emit(hasFinished);

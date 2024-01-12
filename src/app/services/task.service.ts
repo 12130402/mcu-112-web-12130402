@@ -1,19 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
-import { Todo } from '../model/todo';
+import { Todo } from "../model/todo";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class TaskService {
-  private tasks: Todo[] = [];
+  tasks: Todo[] = [];
 
   getById(id: number): Todo | undefined {
     return this.tasks.find((task) => task.id === id);
-  }
-
-  getAll(): Todo[] {
-    return this.tasks;
   }
 
   add(content: string): void {

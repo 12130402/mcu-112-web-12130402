@@ -38,6 +38,9 @@ export class AppComponent implements OnInit {
     this.taskService.remove(id);
   }
 
+  //onStateChange(task: { id: number; state: boolean }): void {
+  //this.taskService.updateState(task.id,task.state);
+  //}
   onStateChange({ id, state }: { id: number; state: boolean }): void {
     this.taskService.updateState(id, state);
   }
