@@ -25,12 +25,12 @@ export class TodoDetailComponent implements OnChanges {
 
   task?: Todo;
 
-  private readonly taskService = inject(TaskService);
+  private readonly taskService = inject(TaskRemoteService);
 
   @HostBinding('class')
   class = 'todo-detail';
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.task = this.taskService.getById(this.id);
+    this.taskService.getById(this.id).subscribe((task) => (this.task = task));
   }
 }
