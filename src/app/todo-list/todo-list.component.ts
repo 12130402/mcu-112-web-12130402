@@ -13,7 +13,7 @@ import { Todo } from '../model/todo';
 })
 export class TodoListComponent {
   @Input()
-  tasks?: Todo[];
+  tasks?: Todo[] | null;
 
   @Output()
   remove = new EventEmitter<number>();

@@ -1,5 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Todo } from '../model/todo';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
@@ -12,6 +14,9 @@ export class TaskRemoteService {
 
   getAll(): Observable<Todo[]> {
     return this.httpClient.get<Todo[]>(this.url);
+  }
+  url<T>(url: any): Observable<Todo[]> {
+    throw new Error('Method not implemented.');
   }
 
   add(content: string): void {
