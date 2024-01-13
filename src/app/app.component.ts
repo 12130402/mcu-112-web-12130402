@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
   selectedId?: number;
 
   ngOnInit(): void {
-    this.tasks = this.taskService.getAll().subscribe((tasks) => this.tasks);
+    this.taskService.getAll().subscribe((tasks) => (this.tasks = tasks));
   }
 
   onAdd(): void {
