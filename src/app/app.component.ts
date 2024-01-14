@@ -8,6 +8,7 @@ import { TodoDetailComponent } from './todo-detail/todo-detail.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TaskRemoteService } from './services/task-remote.service';
 import { BehaviorSubject, Observable, Subject, switchMap } from 'rxjs';
+import { TodoSearchComponent } from './todo-search/todo-search.component';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -16,6 +17,7 @@ import { BehaviorSubject, Observable, Subject, switchMap } from 'rxjs';
     AsyncPipe,
     HeaderComponent,
     TodoListComponent,
+    TodoSearchComponent,
     TodoDetailComponent,
     FooterComponent,
   ],
