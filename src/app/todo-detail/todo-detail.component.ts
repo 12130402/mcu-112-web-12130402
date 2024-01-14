@@ -25,7 +25,7 @@ export class TodoDetailComponent implements OnChanges {
 
   task!: <Todo | undefined>;
 
-  private readonly taskService = inject(TaskRemoteService);
+  private readonly taskService = inject(TaskService);
 
   @HostBinding('class')
   class = 'todo-detail';
