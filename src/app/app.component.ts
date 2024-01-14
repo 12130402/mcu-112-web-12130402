@@ -7,7 +7,7 @@ import { TaskService } from './services/task.service';
 import { TodoDetailComponent } from './todo-detail/todo-detail.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TaskRemoteService } from './services/task-remote.service';
-import { Observable, Subject, switchMap } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, switchMap } from 'rxjs';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -27,14 +27,18 @@ export class AppComponent implements OnInit {
 
   tasks$!: Observable<Todo[]>;
 
+  readonly search$ = new BehaviorSubject<string | null>(null);
+
   readonly refresh$ = new Subject<void>();
 
   selectedId?: number;
 
   ngOnInit(): void {
     //run when refresh
-    this.tasks$ = this.refresh$.pipe();
-    startWith(undefined), switchMap(() => this.taskService.getAll(null));
+    this.tasks$ = merge(
+      this.refresh$.pipe(stratWith(undefined)),
+      this.search$
+    ).pipe(switchMap(() => this.taskService.getAll(this.search$.values)));
   }
 
   onAdd(): void {
@@ -52,5 +56,9 @@ export class AppComponent implements OnInit {
     this.taskService
       .updateState(task, state)
       .subscribe(() => this.refresh$.next());
+  }
+
+  onSearch(content: string | null): void {
+    this.search$.next(content);
   }
 }
