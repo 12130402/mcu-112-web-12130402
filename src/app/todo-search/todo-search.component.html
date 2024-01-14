@@ -1,2 +1,3 @@
-<input type="text" placeholder="待辦事項內容" />
+<input type="text" placeholder="待辦事項內容" [formControl]="formControl" />
 <button type="button" (click)="search.emit()">查詢</button>
+<pre>{{ formControl.value | json }}</pre>

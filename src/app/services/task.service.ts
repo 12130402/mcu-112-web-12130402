@@ -13,7 +13,7 @@ export class TaskService {
     return of (this.tasks.find((task) => task.id === id));
   }
 
-  getAll(): Observable<Todo[]>{
+  getAll(content: string | nullp): Observable<Todo[]>{
     console.log('Task Service - getAll');
     return of (this.tasks);
   }

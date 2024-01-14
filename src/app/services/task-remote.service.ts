@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Todo } from '../model/todo';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { TitleStrategy } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
@@ -13,9 +14,10 @@ export class TaskRemoteService {
     return this.httpClient.get<Todo | undefined>(`${this.url}/${id}`);
   }
 
-  getAll(): Observable<Todo[]> {
+  getAll(content: string | null): Observable<Todo[]> {
     console.log('Task Remote Service - getAll');
-    return this.httpClient.get<Todo[]>(this.url);
+    const url = content ? `${this.url}?content_like=${content}` : this.url;
+    return this.httpClient.get<Todo[]>(url);
   }
   url<T>(url: any): Observable<Todo[]> {
     throw new Error('Method not implemented.');

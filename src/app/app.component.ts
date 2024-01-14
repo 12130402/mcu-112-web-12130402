@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     //run when refresh
     this.tasks$ = this.refresh$.pipe();
-    startWith(undefined), switchMap(() => this.taskService.getAll());
+    startWith(undefined), switchMap(() => this.taskService.getAll(null));
   }
 
   onAdd(): void {
