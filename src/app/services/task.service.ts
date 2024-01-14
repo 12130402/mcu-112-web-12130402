@@ -13,12 +13,12 @@ export class TaskService {
     return of (this.tasks.find((task) => task.id === id));
   }
 
-  getAll(content: string | nullp): Observable<Todo[]>{
+  getAll(content : string | nullp): Observable<Todo[]>{
     console.log('Task Service - getAll');
     return of (this.tasks);
   }
 
-  add(content: string): void {
+  add({ content } : Todo): void {
     console.log('Task Service - add');
     const id =
       this.tasks.length === 0

@@ -19,13 +19,9 @@ export class TaskRemoteService {
     const url = content ? `${this.url}?content_like=${content}` : this.url;
     return this.httpClient.get<Todo[]>(url);
   }
-  url<T>(url: any): Observable<Todo[]> {
-    throw new Error('Method not implemented.');
-  }
 
-  add(content: string): Observable<Todo> {
-    console.log('Task Remote Service - add');
-    const task = new Todo({ content });
+  add(task: Todo): Observable<Todo> {
+    console.log('Task Remote Service - add', task);
     return this.httpClient.post<Todo>(this.url, task);
   }
 

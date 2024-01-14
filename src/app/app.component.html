@@ -14,7 +14,7 @@
 </div>
 
 <div class="container">
-  <app-todo-form></app-todo-form>
+  <app-todo-form (save)="onsave($event)"></app-todo-form>
 </div>
 
 <ng-container *ngIf="selectedId">
