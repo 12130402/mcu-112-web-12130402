@@ -7,7 +7,7 @@ import { TaskService } from './services/task.service';
 import { TodoDetailComponent } from './todo-detail/todo-detail.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TaskRemoteService } from './services/task-remote.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject, switchMap } from 'rxjs';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -27,14 +27,18 @@ export class AppComponent implements OnInit {
 
   tasks$!: Observable<Todo[]>;
 
+  readonly refresh$ = new Subject<void>();
+
   selectedId?: number;
 
   ngOnInit(): void {
-    this.tasks$.this.taskService.getAll();
+    //run when refresh
+    this.tasks$ = this.refresh$.pipe();
+    startWith(undefined), switchMap(() => this.taskService.getAll());
   }
 
   onAdd(): void {
-    this.task$ = Service.add('待辦事項 C');
+    this.taskService.add('待辦事項 C').subscribe(() => this.refresh$.next());
   }
 
   onRemove(id: number): void {

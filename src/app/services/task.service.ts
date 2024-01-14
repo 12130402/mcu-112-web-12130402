@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core";
-
-import { Todo } from "../model/todo";
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Todo } from '../model/todo';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class TaskService {
   tasks: Todo[] = [];
@@ -17,8 +17,9 @@ export class TaskService {
       this.tasks.length === 0
         ? 1
         : Math.max(...this.tasks.map((task) => task.id)) + 1;
-    const task = new Todo(id, content);
+    const task = new Todo({ id, content });
     this.tasks.push(task);
+    retuen of(task);
   }
 
   updateState(id: number, hasFinished: boolean): void {
